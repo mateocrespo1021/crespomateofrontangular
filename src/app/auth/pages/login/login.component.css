@@ -1,0 +1,14 @@
+.login.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Ocupa toda la altura de la ventana */
+ 
+}
+
+@media (min-width:768px){
+  .login.container{
+    padding: 200px;
+    
+  }
+}

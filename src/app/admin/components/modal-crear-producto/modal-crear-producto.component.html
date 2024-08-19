@@ -1,0 +1,46 @@
+<div class="card flex justify-content-center">
+    <p-button (onClick)="showDialog()" label="Crear Producto" />
+    <p-dialog header="Crear Producto" [modal]="true" [(visible)]="visible" [style]="{ width: '50rem' }"
+        [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }" [maximizable]="true">
+        <form [formGroup]="formCrearPro" class="form" (ngSubmit)="crearProducto()">
+            <div class="form__campo">
+                <label for="nombre">Nombre</label>
+                <input id="nombre" type="text" pInputText formControlName="nombre" placeholder="Nombre Producto" />
+            </div>
+            <div class="form__campo">
+                <label for="precio">Precio</label>
+                <p-inputNumber inputId="precio" mode="decimal" formControlName="precio" [minFractionDigits]="2"
+                    [maxFractionDigits]="5" />
+            </div>
+            <div class="form__campo">
+                <label for="stock">Stock</label>
+                <p-inputNumber inputId="stock" formControlName="stock" />
+            </div>
+            <div class="form__campo">
+                <label for="categoria">Categoria</label>
+                <p-dropdown formControlName="id_categoria" [options]="categoriasDisponibles" optionLabel="nombre"
+                    placeholder="Seleccione una Categoria" />
+            </div>
+            <div class="form__campo">
+                <label for="imagen">Imagen</label>
+                <p-toast />
+                <p-fileUpload mode="basic" chooseLabel="Seleccione" chooseIcon="pi pi-upload" name="demo[]"
+                    url="https://www.primefaces.org/cdn/api/upload.php" accept="image/*"
+                    (onSelect)="onUpload($event)" />
+            </div>
+            <div class="form__campo">
+                <label for="ubicacion">Ubicacion</label>
+                <input id="ubicacion" type="text" pInputText formControlName="ubicacion" placeholder="Ubicacion Producto" />
+            </div>
+            <div class="form__campo">
+                <label for="fecha_caducidad">Fecha Caducidad</label>
+                <p-calendar inputId="fecha_caducidad" formControlName="fecha_caducidad"/>
+            </div>
+            <div class="form__campo">
+                <label for="descripcion">Descripción</label>
+                <textarea formControlName="descripcion" id="descripcion" rows="5" cols="30" pInputTextarea></textarea>
+            </div>
+            <p-button type="submit" label="Guardar" />
+        </form>
+    </p-dialog>
+</div>

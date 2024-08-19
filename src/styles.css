@@ -1,0 +1,61 @@
+/* You can add global styles to this file, and also import other style files */
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+@import "primeicons/primeicons.css";
+
+
+html {
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    font-size: 16px;
+    font-family: "Open Sans", sans-serif;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+
+.form-text{
+  display: block;
+  text-align: right;
+} 
+
+.text-danger{
+    color: red;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+[class*="container"] {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 95%;
+}
+
+.btn-modal{
+    display: flex;
+    justify-content: end;
+    margin: 20px;
+  }

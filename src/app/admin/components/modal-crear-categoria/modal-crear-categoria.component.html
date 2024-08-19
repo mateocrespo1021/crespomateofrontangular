@@ -1,0 +1,13 @@
+<div class="card flex justify-content-center">
+    <p-button (onClick)="showDialog()" label="Crear Categoria" />
+    <p-dialog header="Crear Categoria" [modal]="true" [(visible)]="visible" [style]="{ width: '50rem' }"
+        [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }" [maximizable]="true">
+        <form [formGroup]="formCrearCategoria" class="form" (ngSubmit)="crearCategoria()">
+            <div class="form__campo">
+                <label for="nombre">Nombre</label>
+                <input id="nombre" type="text" pInputText formControlName="nombre" placeholder="Nombre Producto" />
+            </div>
+            <p-button type="submit" label="Guardar" />
+        </form>
+    </p-dialog>
+</div>

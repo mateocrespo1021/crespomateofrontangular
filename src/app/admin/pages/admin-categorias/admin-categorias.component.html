@@ -1,0 +1,35 @@
+
+<div class="btn-modal">
+    <app-modal-crear-categoria></app-modal-crear-categoria>
+</div>
+
+<p-table [value]="categorias()" [tableStyle]="{'min-width': '60rem'}">
+    <ng-template pTemplate="caption">
+        <div class="flex align-items-center justify-content-between">
+            Categorias
+            <p-button icon="pi pi-refresh" />
+        </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Nombre</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-categoria>
+        <tr>
+            <td>{{categoria.nombre}}</td>
+            <td><app-modal-editar-categoria [categoria]="categoria"></app-modal-editar-categoria></td>
+            <td><p-button (click)="eliminarCategoria(categoria.id,$event)" label="Eliminar" severity="danger" /></td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+        <div class="flex align-items-center justify-content-between">
+            Hay un total de {{categorias() ? categorias().length : 0 }} categorias.
+        </div>
+    </ng-template>
+</p-table>
+
+<p-toast />
+<p-confirmDialog />

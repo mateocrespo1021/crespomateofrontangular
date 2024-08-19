@@ -1,0 +1,73 @@
+<div class="card flex justify-content-center">
+    <p-sidebar #sidebarRef [(visible)]="sidebarVisible" styleClass="w-25rem" class="aside">
+        <ng-template pTemplate="headless">
+            <div class="flex flex-column h-full">
+                <div class="flex align-items-center justify-content-between px-4 pt-3 flex-shrink-0">
+                    <span class="inline-flex align-items-center gap-2">
+                        <i class="pi pi-shop" style="font-size: 2.5rem"></i>
+                        <span class="font-semibold text-2xl text-primary">PCLAPTOP</span>
+                    </span>
+                    <span>
+                        <p-button type="button" (click)="closeCallback($event)" icon="pi pi-times" rounded="true"
+                            outlined="true" styleClass="h-2rem w-2rem"></p-button>
+                    </span>
+                </div>
+                <div class="overflow-y-auto">
+                    <ul class="list-none p-3 m-0">
+                        <li>
+                            <div pRipple pStyleClass="@next" enterClass="hidden" enterActiveClass="slidedown"
+                                leaveToClass="hidden" leaveActiveClass="slideup"
+                                class="p-3 flex align-items-center justify-content-between text-600 cursor-pointer p-ripple">
+                                <span class="font-medium">FAVORITES</span>
+                                <i style="font-size: 2rem" class="pi pi-chevron-down"></i>
+                            </div>
+                            <ul class="list-none p-0 m-0 overflow-hidden">
+                                <li>
+                                    <a (click)="sidebarVisible = false" routerLink="/admin/categorias" pRipple
+                                        class="flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors p-ripple">
+                                        <i style="font-size: 2rem" class="pi pi-box mr-2"></i>
+                                        <span class="font-medium">Categorias</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a (click)="sidebarVisible = false" routerLink="/admin/productos" pRipple
+                                        class="flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors p-ripple">
+                                        <i style="font-size: 2rem" class="pi pi-box mr-2"></i>
+                                        <span class="font-medium">Productos</span>
+                                    </a>
+                                </li>
+                                <li *ngIf="rol=='ADMIN'">
+                                    <a (click)="sidebarVisible = false" routerLink="/admin/usuarios" pRipple
+                                        class="flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors p-ripple">
+                                        <i style="font-size: 2rem" class="pi pi-home mr-2"></i>
+                                        <span class="font-medium">Usuarios</span>
+                                    </a>
+                                </li>
+
+                                <li *ngIf="rol=='ADMIN'">
+                                    <a (click)="sidebarVisible = false" routerLink="/admin/reportes" pRipple
+                                        class="flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors p-ripple">
+                                        <i style="font-size: 2rem" class="pi pi-home mr-2"></i>
+                                        <span class="font-medium">Reportes</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="mt-auto">
+                    <hr class="mb-3 mx-3 border-top-1 border-none surface-border" />
+
+                    <a (click)="cerrarSesion()" pRipple
+                        class="m-3 flex align-items-center cursor-pointer p-3 gap-2 border-round text-700 hover:surface-100 transition-duration-150 transition-colors p-ripple">
+                        <i style="font-size: 2rem" class="pi pi-sign-out mr-2"></i>
+                        <span class="font-bold">Cerrar Sesión</span>
+                    </a>
+                </div>
+            </div>
+        </ng-template>
+    </p-sidebar>
+
+    <p-button class="btn-sticky" (click)="sidebarVisible = true" icon="pi pi-bars" label="Menú" [text]="true"
+        [raised]="true" [plain]="true"></p-button>
+</div>

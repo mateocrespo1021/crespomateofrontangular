@@ -1,0 +1,49 @@
+
+<div class="btn-modal">
+    <app-modal-crear-producto></app-modal-crear-producto>
+</div>
+
+<p-table [value]="productos()" [tableStyle]="{'min-width': '60rem'}">
+    <ng-template pTemplate="caption">
+        <div class="flex align-items-center justify-content-between">
+            Productos
+            <p-button icon="pi pi-refresh" />
+        </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Nombre</th>
+            <th>Imagen</th>
+            <th>Precio</th>
+            <th>Categoria</th>
+            <th>Stock</th>
+            <th>Descripción</th>
+            <th>Ubicacion</th>
+            <th>Fecha Caducidad</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-producto>
+        <tr>
+            <td>{{producto.nombre}}</td>
+            <td><img [src]="baseImagenes + producto.imagen" [alt]="producto.nombre" width="100px" class="shadow-4" /></td>
+            <td>{{producto.precio | currency:'USD'}}</td>
+            <td>{{producto.id_categoria.nombre}}</td>
+            <td>{{producto.stock}}</td>
+            <td>{{producto.descripcion}}</td>
+            <td>{{producto.ubicacion}}</td>
+            <td>{{producto.fecha_caducidad | date}}</td>
+            <td><app-modal-editar-producto [producto]="producto"></app-modal-editar-producto></td>
+            <td><p-button (click)="eliminarProducto(producto.id,$event)" label="Eliminar" severity="danger" /></td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+        <div class="flex align-items-center justify-content-between">
+            Hay un total de {{productos() ? productos().length : 0 }} productos.
+        </div>
+    </ng-template>
+</p-table>
+
+<p-toast />
+<p-confirmDialog />
